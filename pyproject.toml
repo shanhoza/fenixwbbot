@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "fenixwbbot"
+version = "0.1.0"
+description = ""
+authors = ["Vitaly Sokol <shanhozas@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiogram = "^2.25.1"
+asyncio = "^3.4.3"
+pymongo = "^4.3.3"
+ujson = "^5.7.0"
+uvloop = "^0.17.0"
+aiodns = "^3.0.0"
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
