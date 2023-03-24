@@ -24,8 +24,7 @@ async def start_bot():
     bot = Bot(token=API_TOKEN, parse_mode='HTML')  # type: ignore
     dp = Dispatcher()  # , storage=MemoryStorage())
 
-    await __on_startup(dp)
-    # dp.startup.register(__on_startup)
+    dp.startup.register(__on_startup)
 
     try:
         await dp.start_polling(bot, skip_updates=True)
