@@ -3,8 +3,7 @@ import logging
 
 from aiogram import Bot, Dispatcher
 
-from bot.config import API_TOKEN
-from bot.database.models import register_models
+import bot.config as config
 from bot.handlers import register_user_handlers
 
 logging.basicConfig(
@@ -17,14 +16,12 @@ logger = logging.getLogger(__name__)
 async def __on_startup(dp: Dispatcher) -> None:
     # register_admin_handlers(dp)
     await register_user_handlers(dp)
-    # register_models(dpAPI_TOKEN=None)
 
 
 async def start_bot():
-    bot = Bot(token=API_TOKEN, parse_mode='HTML')  # type: ignore
+    bot = Bot(token=config.API_TOKEN, parse_mode='HTML')  # type: ignore
     dp = Dispatcher()  # , storage=MemoryStorage())
-
-    dp.startup.register(__on_startup)
+    await __on_startup(dp)
 
     try:
         await dp.start_polling(bot, skip_updates=True)

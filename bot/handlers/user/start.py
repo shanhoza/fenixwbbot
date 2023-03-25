@@ -20,6 +20,7 @@ async def callback_of_start_command(callback: types.CallbackQuery):
 
     data = await processes.get(callback.data)()  # type: ignore
     await callback.message.edit_text(**data)  # type: ignore
+    await callback.answer()
 
 
 async def _process_vendor_code():
@@ -37,4 +38,7 @@ async def _process_vendor_code_plus_keyword():
 
 
 async def _return_to_start():
-    return {'text': msg.WELCOME, 'reply_markup': START_KB}
+    return {
+        'text': msg.WELCOME,
+        'reply_markup': START_KB
+    }
