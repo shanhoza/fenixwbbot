@@ -24,9 +24,6 @@ async def _vendor_code_callback(
 @router.message(StartCommandStates.waiting_for_vendor_code,
                 F.text,
                 flags={'long_operation': 'typing'})
-async def vendor_code_sent(
-        message: types.Message,
-        state: FSMContext
-):
+async def vendor_code_sent(message: types.Message, state: FSMContext):
     await message.answer(text='получен vendor_code')
     await state.clear()
